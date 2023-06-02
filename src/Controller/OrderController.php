@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Dto\ItemDto;
 use Symfony\Component\HttpFoundation\Response;
-use App\Services\OrderService;
+use App\Service\OrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
@@ -13,7 +13,10 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class OrderController extends AbstractController
 {
-    public function __construct(private OrderService $orderService)
+    public function __construct(
+            private OrderService $orderService,
+            private  ValidatorInterface $validator,
+    )
     {
     }
 
@@ -33,10 +36,9 @@ class OrderController extends AbstractController
     #[Route('/orders', name: 'order.store', methods: 'POST')]
     public function store(
             #[MapRequestPayload]  ItemDto $itemDto,
-                                  ValidatorInterface $validator
     ): JsonResponse
     {
-        $errors = $validator->validate($itemDto);
+        $errors = $this->validator->validate($itemDto);
 
         if (count($errors)>0) {
            return$this->json((string) $errors);
