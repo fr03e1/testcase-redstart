@@ -2,7 +2,11 @@
 
 namespace App\Service;
 
+use App\Dto\OrderRequest;
+use App\Entity\Item;
 use App\Entity\Order;
+use App\Entity\OrderItem;
+use App\Repository\ItemRepository;
 use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityNotFoundException;
@@ -11,6 +15,7 @@ class OrderService
 {
     public function __construct(
             private OrderRepository $orderRepository,
+            private ItemRepository $itemRepository,
     )
     {
     }
@@ -19,7 +24,7 @@ class OrderService
     {
         $order = $this->orderRepository->find($orderId);
         if(!$order) {
-            throw new EntityNotFoundException('Заказ с id ' . $orderId . ' не существует');
+            throw new EntityNotFoundException('Order with id ' . $orderId . ' not exist');
         }
 
         return $order;
@@ -30,31 +35,28 @@ class OrderService
         return $this->orderRepository->findAll();
     }
 
-//    public function addOrder(OrderDTO $orderDTO): Order
-//    {
-//        $this->orderRepository->save($order);
-//        return $order;
-//    }
+    public function addOrder(array $items): Order
+    {
+        $order = new Order();
 
-//    public function updateArticle(int $articleId, ArticleDTO $articleDTO): Article
-//    {
-//        $article = $this->articleRepository->findById($articleId);
-//        if (!$article) {
-//            throw new EntityNotFoundException('Article with id '.$articleId.' does not exist!');
-//        }
-//        $article = $this->articleAssembler->updateArticle($article, $articleDTO);
-//        $this->articleRepository->save($article);
-//
-//        return $article;
-//    }
+        foreach ($items as $item) {
+            $i = $this->itemRepository->find($item['item_id']);
+            $orderItem = new OrderItem();
 
-//    public function deleteArticle(int $articleId): void
-//    {
-//        $article = $this->articleRepository->findById($articleId);
-//        if (!$article) {
-//            throw new EntityNotFoundException('Article with id '.$articleId.' does not exist!');
-//        }
-//
-//        $this->articleRepository->delete($article);
-//    }
+            $orderItem->setItem($i)
+                ->setQty($item['qty'])
+                ->setPrice($i->getPrice() * $orderItem->getQty());
+
+            $order->addItem($orderItem);
+        }
+
+        $this->orderRepository->save($order,true);
+        return $order;
+    }
+
+    public function updatedOrder(int $id): Order
+    {
+        $order = $this->orderRepository->find($id);
+        return $order;
+    }
 }

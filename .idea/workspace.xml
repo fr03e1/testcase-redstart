@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff50fabd-26c6-48a4-b878-7571ed350e60" name="Changes" comment="add docker">
+    <list default="true" id="ff50fabd-26c6-48a4-b878-7571ed350e60" name="Changes" comment="add validation and create logic">
+      <change afterPath="$PROJECT_DIR$/src/Dto/OrderRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Dto/UpdateOrderRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Mapper/AbstractDtoMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Mapper/DtoMapperInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Mapper/Exceptions/UnexpectedTypeException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Mapper/ItemDtoMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Mapper/OrderDtoMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Mapper/OrderItemDtoMapper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/testCaseRedStart.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/testCaseRedStart.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.override.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.override.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20230601203706.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20230602173810.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/OrderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/OrderService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dto/ItemDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dto/ItemDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dto/OrderDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dto/OrderDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dto/OrderItemDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dto/OrderItemDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Item.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Item.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/OrderItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/OrderItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ItemRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ItemRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/OrderRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/OrderRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/OrderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/OrderService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +43,7 @@
     </execution>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="routes" />
+    <option name="BRANCH" value="docker" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -106,6 +120,24 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
       <path value="$PROJECT_DIR$/vendor/phpstan/phpdoc-parser" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/symfony/serializer-pack" />
+      <path value="$PROJECT_DIR$/vendor/nelmio/cors-bundle" />
+      <path value="$PROJECT_DIR$/vendor/api-platform/core" />
+      <path value="$PROJECT_DIR$/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-link" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/vendor/symfony/clock" />
+      <path value="$PROJECT_DIR$/vendor/symfony/password-hasher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/vendor/symfony/expression-language" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/negotiation" />
+      <path value="$PROJECT_DIR$/vendor/psr/clock" />
+      <path value="$PROJECT_DIR$/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/vendor/twig/twig" />
     </include_path>
   </component>
   <component name="ProjectId" id="2Qc3QM0hUOR7wpStjLqACiwE4vv" />
@@ -121,8 +153,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/fr03e/projects/testCases/testCaseRedStart",
-    "nodejs_package_manager_path": "npm"
+    "last_opened_file_path": "/home/fr03e/projects/testCases/testCaseRedStart/src/Mapper",
+    "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -131,6 +164,12 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Mapper" />
+      <recent name="$PROJECT_DIR$/src/Dto/Transformer" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -184,6 +223,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add routes for orders controller" />
     <MESSAGE value="add docker" />
-    <option name="LAST_COMMIT_MESSAGE" value="add docker" />
+    <MESSAGE value="add validation and create logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="add validation and create logic" />
   </component>
 </project>
