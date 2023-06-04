@@ -14,6 +14,7 @@ use Doctrine\DBAL\Exception;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityNotFoundException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class OrderService implements OrderServiceInterface
 {
@@ -25,12 +26,12 @@ class OrderService implements OrderServiceInterface
     {
     }
 
-    public function getOrder(int $orderId): Order
+    public function getOrder(int $orderId): ?Order
     {
         $order = $this->orderRepository->findOneBy(['id' => $orderId]);
 
         if(!$order) {
-            throw new EntityNotFoundException('Order with id ' . $orderId . ' not exist');
+            return null;
         }
 
         return $order;

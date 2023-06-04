@@ -36,8 +36,12 @@ class OrderController extends AbstractController
     #[Route('/orders/{id}', methods: ['GET','HEAD'])]
     public function show(int $id): JsonResponse
     {
-
         $data = $this->orderService->getOrder($id);
+
+        if(!$data) {
+            return new JsonResponse(data: 'Order with id ' . $id . ' not found' , status: 404);
+        }
+
         $dto = $this->orderDtoMapper->transformFromObject($data);
         return new JsonResponse(data: $dto , status: Response::HTTP_OK);
     }
