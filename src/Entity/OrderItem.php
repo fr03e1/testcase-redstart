@@ -24,14 +24,11 @@ class OrderItem
     )]
     private ?string $price = null;
 
-    #[ORM\ManyToOne(fetch: 'EAGER')]
+    #[ORM\ManyToOne(cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Item $item = null;
 
-    #[ORM\ManyToOne (
-            cascade: ['persist'],
-            fetch: 'EAGER'
-    )]
+    #[ORM\ManyToOne (cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Order $order = null;
 
@@ -101,5 +98,4 @@ class OrderItem
     {
         return $this->getItem()->getPrice() * $this->getQty();
     }
-
 }

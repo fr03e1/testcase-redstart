@@ -109,7 +109,7 @@ class Item
     {
         if (!$this->orderItems->contains($orderItem)) {
             $this->orderItems->add($orderItem);
-            $orderItem->setItems($this);
+            $orderItem->setItem($this);
         }
 
         return $this;

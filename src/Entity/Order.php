@@ -68,6 +68,10 @@ class Order
                         $existingItem->getQty() + $item->getQty()
                 );
 
+                $existingItem->setPrice(
+                        $existingItem->getQty() * ($item->getPrice() / $item->getQty())
+                );
+
                 return $this;
             }
         }

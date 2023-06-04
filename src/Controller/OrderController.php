@@ -5,8 +5,8 @@ namespace App\Controller;
 use App\Dto\OrderRequest;
 use App\Dto\UpdateOrderRequest;
 use App\Mapper\OrderDtoMapper;
+use App\Service\OrderServiceInterface;
 use Symfony\Component\HttpFoundation\Response;
-use App\Service\OrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
@@ -18,7 +18,7 @@ class OrderController extends AbstractController
 
 
     public function __construct(
-            private OrderService $orderService,
+            private OrderServiceInterface $orderService,
             private  ValidatorInterface $validator,
             private OrderDtoMapper $orderDtoMapper,
     )
@@ -45,12 +45,12 @@ class OrderController extends AbstractController
     #[Route('/orders', methods: 'POST')]
     public function store(
             #[MapRequestPayload]  OrderRequest $orderRequest,
-    )
+    ): JsonResponse
     {
         $errors = $this->validator->validate($orderRequest);
 
         if (count($errors)>0) {
-           return $this->json((string) $errors);
+           return new JsonResponse(data: (string) $errors);
         }
 
         $order = $this->orderService->addOrder($orderRequest->items);
@@ -67,13 +67,14 @@ class OrderController extends AbstractController
     {
         $errors = $this->validator->validate($orderRequest);
 
-        if (count($errors)>0) {
-            return $this->json((string) $errors);
+        if (count($errors) > 0) {
+            return  new JsonResponse(data: (string) $errors);
         }
-        $order = $this->orderService->updatedOrder($id);
+
+        $order = $this->orderService->updatedOrder($id, $orderRequest->items);
         $dto = $this->orderDtoMapper->transformFromObject($order);
 
-        return  new JsonResponse(data: 'hello ', status: Response::HTTP_CREATED);
+        return  new JsonResponse(data: $dto, status: Response::HTTP_OK);
     }
 
     #[Route('/order/{id}',methods: 'DELETE')]
