@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ItemRepository::class)]
 class Item
@@ -19,7 +20,10 @@ class Item
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: '2')]
+    #[ORM\Column(
+            type: Types::DECIMAL,
+            precision: 10, scale: '2')
+    ]
     private ?string $price = null;
 
     #[ORM\Column]
@@ -28,7 +32,11 @@ class Item
     #[ORM\Column]
     private ?bool $isDelete = false;
 
-    #[ORM\OneToMany(mappedBy: 'items', targetEntity: OrderItem::class)]
+    #[ORM\OneToMany(
+            mappedBy: 'item',
+            targetEntity: OrderItem::class,
+            fetch: 'EAGER'
+    )]
     private Collection $orderItems;
 
     public function __construct()

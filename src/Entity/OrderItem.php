@@ -2,9 +2,12 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\Get;
 use App\Repository\OrderItemRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 #[ORM\Entity(repositoryClass: OrderItemRepository::class)]
 class OrderItem
@@ -14,16 +17,20 @@ class OrderItem
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+    #[ORM\Column(
+            type: Types::DECIMAL,
+            precision: 10,
+            scale: 2
+    )]
     private ?string $price = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Item $items = null;
+    private ?Item $item = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne (cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Order $orders = null;
+    private ?Order $order = null;
 
     #[ORM\Column]
     private ?int $qty = null;
@@ -46,26 +53,26 @@ class OrderItem
         return $this;
     }
 
-    public function getItems(): ?Item
+    public function getItem(): ?Item
     {
-        return $this->items;
+        return $this->item;
     }
 
-    public function setItems(?Item $items): self
+    public function setItem(?Item $item): self
     {
-        $this->items = $items;
+        $this->item = $item;
 
         return $this;
     }
 
-    public function getOrders(): ?Order
+    public function getOrder(): ?Order
     {
-        return $this->orders;
+        return $this->order;
     }
 
-    public function setOrders(?Order $orders): self
+    public function setOrder(?Order $order): self
     {
-        $this->orders = $orders;
+        $this->order = $order;
 
         return $this;
     }
@@ -80,5 +87,15 @@ class OrderItem
         $this->qty = $qty;
 
         return $this;
+    }
+
+    public function equals(OrderItem $item): bool
+    {
+        return $this->getItem()->getId() === $item->getItem()->getId();
+    }
+
+    public function getTotal(): float
+    {
+        return $this->getItem()->getPrice() * $this->getQty();
     }
 }

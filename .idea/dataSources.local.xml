@@ -6,12 +6,11 @@
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
-      <secret-storage>master_key</secret-storage>
       <user-name>app</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="database" qname="@">
-            <node kind="schema" qname="@" />
+          <node kind="database" qname="app">
+            <node kind="schema" qname="public" />
           </node>
         </introspection-scope>
       </schema-mapping>
