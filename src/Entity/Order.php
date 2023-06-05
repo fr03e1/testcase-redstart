@@ -23,7 +23,7 @@ class Order
     #[ORM\OneToMany(
             mappedBy: 'order',
             targetEntity: OrderItem::class,
-            cascade: ['persist','remove'],
+            cascade: ['persist'],
             fetch: 'EAGER',
             orphanRemoval: true
     )]

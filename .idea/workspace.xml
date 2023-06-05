@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff50fabd-26c6-48a4-b878-7571ed350e60" name="Changes" comment="add validation and create logic">
-      <change afterPath="$PROJECT_DIR$/src/Service/OrderServiceInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20230603200228.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dto/UpdateOrderRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dto/UpdateOrderRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dto/ItemDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dto/ItemDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dto/OrderItemDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dto/OrderItemDto.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dto/OrderRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dto/OrderRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Item.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Item.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Order.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/OrderItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/OrderItem.php" afterDir="false" />
@@ -164,6 +164,7 @@
       <workItem from="1685642888880" duration="16255000" />
       <workItem from="1685659650731" duration="4832000" />
       <workItem from="1685877246610" duration="9384000" />
+      <workItem from="1685971321318" duration="3455000" />
     </task>
     <task id="LOCAL-00001" summary="add routes for orders controller">
       <created>1685642664078</created>

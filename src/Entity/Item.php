@@ -35,6 +35,7 @@ class Item
     #[ORM\OneToMany(
             mappedBy: 'item',
             targetEntity: OrderItem::class,
+            cascade: ['persist'],
             fetch: 'EAGER'
     )]
     private Collection $orderItems;

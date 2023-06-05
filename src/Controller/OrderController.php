@@ -57,36 +57,7 @@ class OrderController extends AbstractController
            return new JsonResponse(data: (string) $errors);
         }
 
-        $order = $this->orderService->addOrder($orderRequest->items);
 
-        $dto = $this->orderDtoMapper->transformFromObject($order);
-        return  new JsonResponse(data: $dto , status: Response::HTTP_CREATED);
-    }
-
-    #[Route('/orders/{id}',methods: 'PATCH')]
-    public function update(
-            int $id,
-            #[MapRequestPayload]  UpdateOrderRequest $orderRequest,
-    ): JsonResponse
-    {
-        $errors = $this->validator->validate($orderRequest);
-
-        if (count($errors) > 0) {
-            return  new JsonResponse(data: (string) $errors);
-        }
-
-        $order = $this->orderService->updatedOrder($id, $orderRequest->items);
-        $dto = $this->orderDtoMapper->transformFromObject($order);
-
-        return  new JsonResponse(data: $dto, status: Response::HTTP_OK);
-    }
-
-    #[Route('/order/{id}',methods: 'DELETE')]
-    public function delete(): JsonResponse
-    {
-        return $this->json([
-                'message' => 'Welcome to your new controller!',
-                'path' => 'src/Controller/OrderController.php',
-        ]);
+        return  new JsonResponse(data: $orderRequest , status: Response::HTTP_CREATED);
     }
 }

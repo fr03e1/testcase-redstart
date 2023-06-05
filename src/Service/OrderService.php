@@ -20,8 +20,7 @@ class OrderService implements OrderServiceInterface
 {
     public function __construct(
             private OrderRepository $orderRepository,
-            private ItemRepository $itemRepository,
-            private EntityManagerInterface $entityManager,
+
     )
     {
     }
@@ -44,37 +43,13 @@ class OrderService implements OrderServiceInterface
 
     public function addOrder(array $items): ?Order
     {
-        $order = new Order();
-
-        foreach ($items as $item) {
-            $i = $this->itemRepository->find($item['item_id']);
-            $orderItem = new OrderItem();
-
-            $orderItem->setItem($i)
-                ->setQty($item['qty'])
-                ->setPrice($i->getPrice() * $orderItem->getQty());
-
-            $order->addItem($orderItem);
-        }
-
-        $this->orderRepository->save($order,true);
-        return $order;
+        return null;
     }
 
-    public function updatedOrder(int $id, array $items): ?Order
+    public function updatedOrder(int $id,  $item): ?Order
     {
-        $order = $this->orderRepository->findOneBy(['id' => $id]);
 
-        $this->entityManager->beginTransaction();
 
-        try{
-            $order->removeOrderItem($order->getOrderItems()->first());
-            $this->orderRepository->save($order,true);
-            $this->entityManager->getConnection()->commit();
-        }catch (\Exception $e) {
-            $this->entityManager->getConnection()->rollBack();
-            throw $e;
-        }
-        return $order;
+        return null;
     }
 }

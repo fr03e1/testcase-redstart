@@ -25,7 +25,7 @@ class OrderItem
     private ?string $price = null;
 
     #[ORM\ManyToOne(cascade: ['persist'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Item $item = null;
 
     #[ORM\ManyToOne (cascade: ['persist'])]
