@@ -2,19 +2,20 @@
 
 namespace App\Controller;
 
-use App\Request\OrderRequest;
-use App\Request\UpdateOrderRequest;
-use App\Entity\Item;
 use App\Entity\Order;
 use App\Entity\OrderItem;
-use App\Mapper\OrderDtoMapper;
-use App\Repository\OrderRepository;
+use App\Repository\ItemRepository;
+use App\Request\OrderRequest;
+use App\Request\UpdateOrderRequest;
 use App\Service\OrderServiceInterface;
+use http\Env\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -34,8 +35,8 @@ class OrderController extends AbstractController
     public function index(): JsonResponse
     {
         $data = $this->orderService->getAllOrders();
-        $dto = $this->orderDtoMapper->transformFromObjects($data);
-        return new JsonResponse(data: $dto , status: Response::HTTP_OK);
+        $json = $this->serializer->serialize($data,'json',['groups'=>'show_order']);
+        return JsonResponse::fromJsonString($json,Response::HTTP_OK);
     }
 
     #[Route('/orders/{id}', methods: ['GET','HEAD'])]
@@ -47,8 +48,9 @@ class OrderController extends AbstractController
             return new JsonResponse(data: 'Order with id ' . $id . ' not found' , status: 404);
         }
 
-        $dto = $this->orderDtoMapper->transformFromObject($data);
-        return new JsonResponse(data: $dto , status: Response::HTTP_OK);
+        $json = $this->serializer->serialize($data,'json',['groups'=>'show_order']);
+
+        return JsonResponse::fromJsonString($json,Response::HTTP_OK);
     }
 
     #[Route('/orders', methods: 'POST')]
@@ -62,9 +64,11 @@ class OrderController extends AbstractController
            return new JsonResponse(data: (string) $errors);
         }
 
-        $order = $this->orderService->addOrder($orderRequest->items);
-        $dto = $this->orderDtoMapper->transformFromObject($order);
-        return  new JsonResponse(data: $dto , status: Response::HTTP_CREATED);
+         $data = $this->serializer->deserialize( json_encode($orderRequest),Order::class,'json');
+     //   $items = $this->serializer->deserialize(json_decode(),OrderItem::class,'json');
+       //  $this->orderService->addOrder($data);
+
+        return JsonResponse::fromJsonString($this->serializer->serialize($data,'json'),Response::HTTP_CREATED);
     }
 
     #[Route('/orders/{id}', methods: 'PATCH')]

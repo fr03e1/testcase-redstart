@@ -10,10 +10,14 @@ class OrderRequest
     #[Assert\All(
          constraints: new Assert\Collection(
                  fields: [
-                         'item_id' => [new Assert\NotBlank(), new Assert\Positive()],
-                          'qty' => [new Assert\NotBlank(), new Assert\Positive()]
+                         'price' => [new Assert\NotBlank(), new Assert\Positive()],
+                          'item' => [new Assert\NotBlank()],
+                          'qty' => [new Assert\NotBlank()]
                  ]
             )
     )]
-    public array $items;
+    public array $orderItems;
+    public string $name;
+    public string $phone;
+    public float $total;
 }

@@ -10,7 +10,7 @@ interface OrderServiceInterface
 
     public function getAllOrders(): ?array;
 
-    public function addOrder(array $items): ?Order;
+    public function addOrder(Order $order);
 
     public function updatedOrder(int $id, array $items): ?Order;
 }

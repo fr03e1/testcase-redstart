@@ -43,12 +43,9 @@ class OrderService implements OrderServiceInterface
         return $this->orderRepository->findAll();
     }
 
-    public function addOrder(array $items): ?Order
+    public function addOrder(Order $order)
     {
-        $order = new Order();
-
-
-        return $order;
+        $this->orderRepository->save($order,true);
     }
 
 

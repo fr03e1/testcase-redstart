@@ -22,18 +22,21 @@ class OrderItem
             precision: 10,
             scale: 2
     )]
-    private ?string $price = null;
+    #[Groups(['show_order'])]
+    protected ?string $price = null;
 
     #[ORM\ManyToOne(cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: true)]
-    private ?Item $item = null;
+    #[Groups(['show_order'])]
+    protected ?Item $item = null;
 
     #[ORM\ManyToOne (cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Order $order = null;
+    protected ?Order $order = null;
 
     #[ORM\Column]
-    private ?int $qty = null;
+    #[Groups(['show_order'])]
+    protected ?int $qty = null;
 
 
     public function getId(): ?int

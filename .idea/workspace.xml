@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff50fabd-26c6-48a4-b878-7571ed350e60" name="Changes" comment="add store">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="ff50fabd-26c6-48a4-b878-7571ed350e60" name="Changes" comment="add request">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dto/OrderRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dto/OrderRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dto/UpdateOrderRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dto/UpdateOrderRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Item.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Item.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mapper/AbstractDtoMapper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mapper/DtoMapperInterface.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mapper/Exceptions/UnexpectedTypeException.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mapper/ItemDtoMapper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mapper/OrderDtoMapper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mapper/OrderItemDtoMapper.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/OrderItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/OrderItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Request/OrderRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Request/OrderRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/OrderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/OrderService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/OrderServiceInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/OrderServiceInterface.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +163,7 @@
       <workItem from="1685659650731" duration="4832000" />
       <workItem from="1685877246610" duration="9384000" />
       <workItem from="1685971321318" duration="15337000" />
-      <workItem from="1686071676801" duration="522000" />
+      <workItem from="1686071676801" duration="6252000" />
     </task>
     <task id="LOCAL-00001" summary="add routes for orders controller">
       <created>1685642664078</created>
@@ -219,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685986369778</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add request">
+      <created>1686072841896</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1686072841896</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,6 +244,7 @@
     <MESSAGE value="add docker" />
     <MESSAGE value="add validation and create logic" />
     <MESSAGE value="add store" />
-    <option name="LAST_COMMIT_MESSAGE" value="add store" />
+    <MESSAGE value="add request" />
+    <option name="LAST_COMMIT_MESSAGE" value="add request" />
   </component>
 </project>

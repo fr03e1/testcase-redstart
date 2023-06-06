@@ -27,13 +27,16 @@ class Order
             fetch: 'EAGER',
             orphanRemoval: true
     )]
+    #[Groups(['show_order'])]
     private Collection $orderItems;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    #[Groups(['show_order'])]
+    protected ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $phone = null;
+    #[Groups(['show_order'])]
+    protected ?string $phone = null;
 
     public function __construct()
     {

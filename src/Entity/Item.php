@@ -18,13 +18,15 @@ class Item
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    #[Groups(['show_order'])]
+    protected ?string $name = null;
 
     #[ORM\Column(
             type: Types::DECIMAL,
             precision: 10, scale: '2')
     ]
-    private ?string $price = null;
+    #[Groups(['show_order'])]
+    protected ?string $price = null;
 
     #[ORM\Column]
     private ?bool $inStock = true;
