@@ -29,6 +29,12 @@ class Order
     )]
     private Collection $orderItems;
 
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $phone = null;
+
     public function __construct()
     {
         $this->orderItems = new ArrayCollection();
@@ -69,7 +75,7 @@ class Order
                 );
 
                 $existingItem->setPrice(
-                        $existingItem->getQty() * ($item->getPrice() / $item->getQty())
+                        $existingItem->getQty() * $item->getPrice()
                 );
 
                 return $this;
@@ -103,5 +109,29 @@ class Order
         }
 
         return $total;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
     }
 }

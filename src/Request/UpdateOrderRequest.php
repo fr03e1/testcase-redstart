@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Dto;
+namespace App\Request;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -9,8 +9,8 @@ class UpdateOrderRequest
     #[Assert\All(
             constraints: new Assert\Collection(
                     fields: [
-                            'item_id' => [new Assert\NotBlank(), new Assert\Positive()],
-                            'qty' => [new Assert\NotBlank()]
+                            'orderItem_id' => [new Assert\NotBlank(), new Assert\Positive()],
+                            'qty' => [new Assert\NotBlank(), new Assert\Positive()]
                     ]
             )
     )]

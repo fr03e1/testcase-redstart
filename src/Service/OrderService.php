@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use App\Dto\OrderRequest;
+use App\Request\OrderRequest;
 use App\Entity\Item;
 use App\Entity\Order;
 use App\Entity\OrderItem;
@@ -20,7 +20,9 @@ class OrderService implements OrderServiceInterface
 {
     public function __construct(
             private OrderRepository $orderRepository,
-
+            private ItemRepository $itemRepository,
+            private OrderItemRepository $orderItemRepository,
+            private EntityManagerInterface $entityManager,
     )
     {
     }
@@ -43,12 +45,25 @@ class OrderService implements OrderServiceInterface
 
     public function addOrder(array $items): ?Order
     {
-        return null;
+        $order = new Order();
+
+
+        return $order;
     }
+
+
+
 
     public function updatedOrder(int $id,  $item): ?Order
     {
+        $this->entityManager->beginTransaction();
+        try{
 
+
+        }catch (\Exception $e) {
+            $this->entityManager->getConnection()->rollBack();
+            throw $e;
+        }
 
         return null;
     }
