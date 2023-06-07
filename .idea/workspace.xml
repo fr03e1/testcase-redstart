@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff50fabd-26c6-48a4-b878-7571ed350e60" name="Changes" comment="add store method">
+    <list default="true" id="ff50fabd-26c6-48a4-b878-7571ed350e60" name="Changes" comment="add payment method">
       <change afterPath="$PROJECT_DIR$/src/Serializer/CustomSerializer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/testCaseRedStart.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/testCaseRedStart.iml" afterDir="false" />
@@ -176,7 +176,7 @@
       <workItem from="1685659650731" duration="4832000" />
       <workItem from="1685877246610" duration="9384000" />
       <workItem from="1685971321318" duration="15337000" />
-      <workItem from="1686071676801" duration="37643000" />
+      <workItem from="1686071676801" duration="37975000" />
     </task>
     <task id="LOCAL-00001" summary="add routes for orders controller">
       <created>1685642664078</created>
@@ -248,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686078589873</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add payment method">
+      <created>1686147418450</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1686147418450</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,6 +280,7 @@
     <MESSAGE value="add store" />
     <MESSAGE value="add request" />
     <MESSAGE value="add store method" />
-    <option name="LAST_COMMIT_MESSAGE" value="add store method" />
+    <MESSAGE value="add payment method" />
+    <option name="LAST_COMMIT_MESSAGE" value="add payment method" />
   </component>
 </project>
