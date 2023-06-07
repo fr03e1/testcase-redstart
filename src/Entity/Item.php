@@ -15,17 +15,17 @@ class Item
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    protected ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['show_order'])]
+    #[Groups(['show_order','store_order'])]
     protected ?string $name = null;
 
     #[ORM\Column(
             type: Types::DECIMAL,
             precision: 10, scale: '2')
     ]
-    #[Groups(['show_order'])]
+    #[Groups(['show_order','store_order'])]
     protected ?string $price = null;
 
     #[ORM\Column]
@@ -37,7 +37,6 @@ class Item
     #[ORM\OneToMany(
             mappedBy: 'item',
             targetEntity: OrderItem::class,
-            cascade: ['persist'],
             fetch: 'EAGER'
     )]
     private Collection $orderItems;

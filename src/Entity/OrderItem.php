@@ -8,6 +8,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
+use Symfony\Component\Validator\Constraints\Type;
 
 #[ORM\Entity(repositoryClass: OrderItemRepository::class)]
 class OrderItem
@@ -25,13 +26,13 @@ class OrderItem
     #[Groups(['show_order'])]
     protected ?string $price = null;
 
-    #[ORM\ManyToOne(cascade: ['persist'])]
+    #[ORM\ManyToOne(cascade: ['persist'],fetch: 'EAGER')]
     #[ORM\JoinColumn(nullable: true)]
     #[Groups(['show_order'])]
     protected ?Item $item = null;
 
-    #[ORM\ManyToOne (cascade: ['persist'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne (cascade: ['persist'],fetch: 'EAGER')]
+    #[ORM\JoinColumn(nullable: true)]
     protected ?Order $order = null;
 
     #[ORM\Column]
@@ -90,15 +91,5 @@ class OrderItem
         $this->qty = $qty;
 
         return $this;
-    }
-
-    public function equals(OrderItem $item): bool
-    {
-        return $this->getItem()->getId() === $item->getItem()->getId();
-    }
-
-    public function getTotal(): float
-    {
-        return $this->getItem()->getPrice() * $this->getQty();
     }
 }

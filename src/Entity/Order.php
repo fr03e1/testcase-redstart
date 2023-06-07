@@ -38,6 +38,10 @@ class Order
     #[Groups(['show_order'])]
     protected ?string $phone = null;
 
+    #[ORM\Column]
+    #[Groups(['show_order'])]
+    private ?int $total = null;
+
     public function __construct()
     {
         $this->orderItems = new ArrayCollection();
@@ -68,27 +72,12 @@ class Order
         return $this->orderItems;
     }
 
-    public function addItem(OrderItem $item): self
+
+    public function setOrderItems(array $orderItems): void
     {
-        foreach ($this->getOrderItems() as $existingItem) {
-
-            if ($existingItem->equals($item)) {
-                $existingItem->setQty(
-                        $existingItem->getQty() + $item->getQty()
-                );
-
-                $existingItem->setPrice(
-                        $existingItem->getQty() * $item->getPrice()
-                );
-
-                return $this;
-            }
+        foreach ($orderItems as $orderItem) {
+            $this->orderItems[] = $orderItem;
         }
-
-        $this->orderItems[] = $item;
-        $item->setOrder($this);
-
-        return $this;
     }
 
     public function removeOrderItem(OrderItem $orderItem): self
@@ -103,16 +92,6 @@ class Order
         return $this;
     }
 
-    public function getTotal(): float
-    {
-        $total = 0;
-
-        foreach ($this->getOrderItems() as $item) {
-            $total += $item->getTotal();
-        }
-
-        return $total;
-    }
 
     public function getName(): ?string
     {
@@ -137,4 +116,27 @@ class Order
 
         return $this;
     }
+
+    public function addItem(OrderItem $orderItem): self
+    {
+        if (!$this->orderItems->contains($orderItem)) {
+            $this->orderItems->add($orderItem);
+            $orderItem->setOrder($this);
+        }
+
+        return $this;
+    }
+
+    public function getTotal(): ?int
+    {
+        return $this->total;
+    }
+
+    public function setTotal(int $total): self
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
 }
