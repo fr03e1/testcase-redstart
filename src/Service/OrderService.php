@@ -2,20 +2,9 @@
 
 namespace App\Service;
 
-use App\Request\OrderRequest;
-use App\Entity\Item;
 use App\Entity\Order;
-use App\Entity\OrderItem;
-use App\Repository\ItemRepository;
-use App\Repository\OrderItemRepository;
 use App\Repository\OrderRepository;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Exception;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityNotFoundException;
-use JMS\SerializerBundle\JMSSerializerBundle;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 class OrderService implements OrderServiceInterface
 {

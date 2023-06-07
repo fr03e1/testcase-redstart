@@ -105,12 +105,12 @@ RUN set -eux; \
 # Dev image
 FROM app_php AS app_php_dev
 
-ENV APP_ENV=dev XDEBUG_MODE=off
+ENV APP_ENV=dev XDEBUG_MODE=false
 VOLUME /srv/app/var/
 
 RUN rm "$PHP_INI_DIR/conf.d/app.prod.ini"; \
 	mv "$PHP_INI_DIR/php.ini" "$PHP_INI_DIR/php.ini-production"; \
-	mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+	mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini" \
 
 COPY --link docker/php/conf.d/app.dev.ini $PHP_INI_DIR/conf.d/
 
